@@ -20,7 +20,7 @@ public class TransaccionService {
     @CircuitBreaker(name = "transaccionService", fallbackMethod = "fallbackTransacciones")
     @Retry(name = "transaccionService")
     public List<TransaccionDto> obtenerTransacciones() {
-        String url = "http://ms-transacciones/api/transacciones";
+        String url = "http://172.17.0.4:8080/api/transacciones";
         TransaccionDto[] transacciones = restTemplate.getForObject(url, TransaccionDto[].class);
         return transacciones != null ? Arrays.asList(transacciones) : List.of();
     }
